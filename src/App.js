@@ -1,38 +1,41 @@
-import { STATE_LOGIN, STATE_SIGNUP } from './components/AuthForm';
 import GAListener from './components/GAListener';
-import { EmptyLayout, LayoutRoute, MainLayout } from './components/Layout';
+import { MainLayout } from './components/Layout';
 import PageSpinner from './components/PageSpinner';
-import AuthPage from './pages/AuthPage';
 import React from 'react';
 import componentQueries from 'react-component-queries';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import './styles/reduction.scss';
 import { Provider } from 'react-redux';
-import { ConfigureStore } from './redux/configureStore';
+import {ConfigureStore} from './redux/configureStore';
+
+
 import './App.css';
 
-const store = ConfigureStore();
-const AlertPage = React.lazy(() => import('../src/pages/AlertPage'));
 const AuthModalPage = React.lazy(() => import('../src/pages/AuthModalPage'));
-const BadgePage = React.lazy(() => import('../src/pages/BadgePage'));
-const ButtonGroupPage = React.lazy(() => import('../src/pages/ButtonGroupPage'));
-const ButtonPage = React.lazy(() => import('../src/pages/ButtonPage'));
 const CardPage = React.lazy(() => import('../src/pages/CardPage'));
 const ChartPage = React.lazy(() => import('../src/pages/ChartPage'));
 const DashboardPage = React.lazy(() => import('../src/pages/DashboardPage'));
-const DropdownPage = React.lazy(() => import('../src/pages/DropdownPage'));
-const FormPage = React.lazy(() => import('../src/pages/FormPage'));
-const InputGroupPage = React.lazy(() => import('../src/pages/InputGroupPage'));
-const ModalPage = React.lazy(() => import('../src/pages/ModalPage'));
-const AlertDialogPage = React.lazy(() => import('../src/pages/AlertDialogPage'));
-const ProgressPage = React.lazy(() => import('../src/pages/ProgressPage'));
-const TablePage = React.lazy(() => import('../src/pages/TablePage'));
-const TypographyPage = React.lazy(() => import('../src/pages/TypographyPage'));
-const WidgetPage = React.lazy(() => import('../src/pages/WidgetPage'));
+const TransportPage = React.lazy(() => import('../src/pages/TransportPage'));
+const WithASenderPage = React.lazy(() => import('../src/pages/WithASenderPage'));
+const OpenTasksPage = React.lazy(() => import('../src/pages/OpenTasksPage'));
+const ScheduleTripPage = React.lazy(() => import('../src/pages/ScheduleTripPage'));
+const SendYesNextPage = React.lazy(() => import('./pages/SendYesNextPage'));
+const ReceivePage = React.lazy(() => import('../src/pages/ReceivePage'));
+const ReceiveOrdersPage = React.lazy(() => import('../src/pages/ReceiveOrdersPage'));
+const SendYesPage = React.lazy(() => import('./pages/SendYesPage'));
+const SendYesStartPage = React.lazy(() => import('./pages/SendYesStartPage'));
+const SendChoicePage = React.lazy(() => import('../src/pages/SendChoicePage'));
+const SendIfNoPage = React.lazy(() => import('../src/pages/SendIfNoPage'));
+const AsSoonPage = React.lazy(() => import('../src/pages/AsSoonPage'));
+const AsSoonNextPage = React.lazy(() => import('../src/pages/AsSoonNextPage'));
+const ScheduleOrderPage = React.lazy(() => import('../src/pages/ScheduleOrderPage'));
+const ScheduleOrderNextPage = React.lazy(() => import('../src/pages/ScheduleOrderNextPage'));
 
 const getBasename = () => {
   return `/${process.env.PUBLIC_URL.split('/').pop()}`;
 };
+
+const store = ConfigureStore();
 
 class App extends React.Component {
   render() {
@@ -41,45 +44,26 @@ class App extends React.Component {
       <BrowserRouter basename={getBasename()}>
         <GAListener>
           <Switch>
-            <LayoutRoute
-              exact
-              path="/login"
-              layout={EmptyLayout}
-              component={props => (
-                <AuthPage {...props} authState={STATE_LOGIN} />
-              )}
-            />
-            <LayoutRoute
-              exact
-              path="/signup"
-              layout={EmptyLayout}
-              component={props => (
-                <AuthPage {...props} authState={STATE_SIGNUP} />
-              )}
-            />
-
             <MainLayout breakpoint={this.props.breakpoint}>
               <React.Suspense fallback={<PageSpinner />}>
                 <Route exact path="/" component={DashboardPage} />
-                <Route exact path="/login-modal" component={AuthModalPage} />
-                <Route exact path="/buttons" component={ButtonPage} />
+                <Route exact path="/login" component={AuthModalPage} />
                 <Route exact path="/cards" component={CardPage} />
-                <Route exact path="/widgets" component={WidgetPage} />
-                <Route exact path="/typography" component={TypographyPage} />
-                <Route exact path="/alerts" component={AlertPage} />
-                <Route exact path="/tables" component={TablePage} />
-                <Route exact path="/badges" component={BadgePage} />
-                <Route
-                  exact
-                  path="/button-groups"
-                  component={ButtonGroupPage}
-                />
-                <Route exact path="/dropdowns" component={DropdownPage} />
-                <Route exact path="/progress" component={ProgressPage} />
-                <Route exact path="/modals" component={ModalPage} />
-                <Route exact path="/alertdialog" component={AlertDialogPage} />
-                <Route exact path="/forms" component={FormPage} />
-                <Route exact path="/input-groups" component={InputGroupPage} />
+                <Route exact path="/transport" component={TransportPage} />
+                <Route exact path="/withasender" component={WithASenderPage} />
+                <Route exact path="/opentasks" component={OpenTasksPage} />
+                <Route exact path="/scheduletrip" component={ScheduleTripPage} />
+                <Route exact path="/sendyesstart" component={SendYesStartPage} />
+                <Route exact path="/sendyes" component={SendYesPage} />
+                <Route exact path="/sendyesnext" component={SendYesNextPage} />
+                <Route exact path="/sendchoice" component={SendChoicePage} />
+                <Route exact path="/sendifno" component={SendIfNoPage} />
+                <Route exact path="/assoon" component={AsSoonPage} />
+                <Route exact path="/assoonnext" component={AsSoonNextPage} />
+                <Route exact path="/scheduleorder" component={ScheduleOrderPage} />
+                <Route exact path="/scheduleordernext" component={ScheduleOrderNextPage} />
+                <Route exact path="/receive" component={ReceivePage} />
+                <Route exact path="/receiveorders" component={ReceiveOrdersPage} />
                 <Route exact path="/charts" component={ChartPage} />
               </React.Suspense>
             </MainLayout>

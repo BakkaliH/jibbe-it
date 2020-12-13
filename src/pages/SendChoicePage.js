@@ -1,4 +1,4 @@
-import Page from '../components/Page';
+
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -39,9 +39,9 @@ export default function AlertDialog() {
           </DialogContent>
           <DialogActions>
             <Button color="primary" autoFocus>
-          <Link to={'/modals'} >Yes</Link></Button>
+          <Link to={'/sendyesstart'} >Yes</Link></Button>
             <Button onClick={handleClose} color="primary" autoFocus>
-            <Link to={'/modals'} >No</Link></Button>
+            <Link to={'/sendifno'} >No</Link></Button>
           </DialogActions>
         </Dialog>
       </div>

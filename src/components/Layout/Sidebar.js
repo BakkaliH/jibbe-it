@@ -32,24 +32,18 @@ const sidebarBackground = {
 
 const navComponents = [
 
-  { to: '/alertdialog', name: 'Send', exact: false, Icon: MdSend },
-  { to: '/input-groups', name: 'Receive', exact: false, Icon: MdReceipt },
-  { to: '/dropdowns', name: 'Transport', exact: false, Icon: MdMotorcycle},
+  { to: '/sendchoice', name: 'Send', exact: false, Icon: MdSend },
+  { to: '/receive', name: 'Receive', exact: false, Icon: MdReceipt },
+  { to: '/transport', name: 'Transport', exact: false, Icon: MdMotorcycle},
 ];
 
 const navContents = [
-  // { to: '/typography', name: 'typography', exact: false, Icon: MdTextFields },
-  // { to: '/tables', name: 'tables', exact: false, Icon: MdBorderAll },
+  
 ];
 
 const pageContents = [
   { to: '/login', name: 'Q & Suggestions', exact: false, Icon: MdHelp },
-  // {
-  //   to: '/login-modal',
-  //   name: 'login modal',
-  //   exact: false,
-  //   Icon: MdViewCarousel,
-  // },
+
 ];
 
 const navItems = [
